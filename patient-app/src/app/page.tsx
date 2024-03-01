@@ -7,7 +7,7 @@ export default function Home() {
     <main>
       <h1>PATIENT LIST</h1>
       <Form/>
-      <PatientCard/>
+      {/* <PatientCard /> */}
     </main>
   );
 }

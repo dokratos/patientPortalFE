@@ -1,19 +1,30 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import IPatient from '../types/IPatient'
+import axios from 'axios'
 
-
-
-const PatientCard = () => {
+const PatientCard = (props: IPatient) => {
   return (
     <article>
-      <p></p>
-      <p></p>
+      <p>{props.name} {props.lastname}</p>
+      <p>{props.INR}</p>
       <button>UPDATE</button>
       <button>DELETE</button>
     </article>
   )
 }
 
-PatientCard.propTypes = {}
+export async function getStaticProps() {
+  const res = await axios.get('http://localhost:8080/')
+  const patients = await res.data();
+ 
+  // By returning { props: { posts } }, the Blog component
+  // will receive `posts` as a prop at build time
+  return {
+    props: {
+      patients,
+    },
+  }
+}
+
 
 export default PatientCard
