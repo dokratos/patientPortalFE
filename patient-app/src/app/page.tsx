@@ -29,7 +29,7 @@ export default async function Home() {
         <PatientCard
       key={patient.id} 
       name={patient.name} 
-      lastname={patient.lastname} 
+      lastName={patient.lastName} 
       INR={patient.INR} 
       id={patient.id}/>
       )}

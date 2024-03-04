@@ -1,7 +1,7 @@
 interface IPatient {
   id: number,
   name: string,
-  lastname: string,
+  lastName: string,
   INR: number
 }
 
