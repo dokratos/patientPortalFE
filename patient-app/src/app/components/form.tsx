@@ -1,10 +1,32 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import axios from 'axios'
+import { useEffect, useState } from 'react'
 
 const Form = () => {
+
+
+  async function createPatient (formData: FormData) {
+    // const []
+    
+    const patientData = {
+      name: formData.get('name'),
+      lastName: formData.get('lastname'),
+      INR: formData.get('INR'),
+    }
+    console.log(patientData);
+    const postPatient = await axios.post('http://localhost:8080/portal/patients', patientData, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    return postPatient;
+  }
+
+
   return (
     <div>
-      <form>
+      <form onSubmit={createPatient}>
         <input
         type='text'
         name='name'
