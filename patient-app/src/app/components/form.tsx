@@ -1,32 +1,27 @@
+"use client"
+
 import React from 'react'
 import PropTypes from 'prop-types'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
+import IPatient from '../types/IPatient'
 
 const Form = () => {
 
 
-  async function createPatient (formData: FormData) {
-    // const []
-    
-    const patientData = {
-      name: formData.get('name'),
-      lastName: formData.get('lastname'),
-      INR: formData.get('INR'),
-    }
-    console.log(patientData);
+  async function createPatient (patientData) {
     const postPatient = await axios.post('http://localhost:8080/portal/patients', patientData, {
       headers: {
         'Content-Type': 'application/json'
       }
     });
-    return postPatient;
+    return postPatient.data;
   }
 
 
   return (
     <div>
-      <form onSubmit={createPatient}>
+      <form >
         <input
         type='text'
         name='name'
