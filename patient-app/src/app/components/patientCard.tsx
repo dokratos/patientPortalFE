@@ -1,6 +1,8 @@
 import React, { MouseEventHandler } from 'react'
+import { useEffect, useState } from 'react'
 import axios from 'axios'
 import IPatient from '../types/IPatient'
+
 
 type PatientCardProps = {
   id: number,
@@ -11,6 +13,7 @@ type PatientCardProps = {
 }
 
 const PatientCard = ({name, lastName, INR, id, deletePatient}: PatientCardProps) => {
+  const [isEdit, setIsEdit] = useState<boolean>(false);
   return (
     <article>
       <p>{name} {lastName}</p>
